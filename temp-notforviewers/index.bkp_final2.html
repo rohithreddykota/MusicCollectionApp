@@ -1,0 +1,54 @@
+{% extends 'music/base.html' %}
+{% block title %}Albums{% endblock %}
+{% block album_active %}active{% endblock %}
+{% load staticfiles%}
+{% block extra_head%}
+<!--  -->
+<!--  added extra-->
+
+<link rel="stylesheet" href="{% static 'music/css/styles.min.css' %}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--  -->
+<!-- added extra till hear -->
+{% endblock %}
+
+{% block body %}
+
+    <div class="team-grid">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="text-center">{{request.user}}'s Ablums</h2>
+                </div>
+            </div>
+            <div class="row people">
+                {% if albums%}
+                {% for album in albums %}
+                <div class="col-md-3 col-sm-4 item">
+                    <div class="box" style="background-image:url({{album.album_logo.url}})">
+                        <div class="cover">
+                            <h3 class="name">{{album.album_title}}</h3>
+                            <p class="title">{{album.album_artist}}</p>
+                            <div class="social">
+                                <a href="{% url 'music:favorite_album' album.id %}"><i class="glyphicon glyphicon-heart{% if not album.isfavorite %}-empty{% endif %}"></i>
+                                </a><a href="{% url 'music:details' album.id %}"><i class="glyphicon glyphicon-music"></i>
+                                <form method="post" action="{% url 'music:delete_album' album.id %}" class="form-inline">
+                                    <input type="hidden" name="album_id" value="{{ album.id }}" class="form-control" />
+                                    {% csrf_token %}
+                                    <button class="btn btn-default" type="submit"> <i class="glyphicon glyphicon-trash"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+
+{% extends 'music/base.html' %}
+{% block title %}Songs{% endblock %}
+{% block body %}
+<div class="albums-container container-fluid">
+{% block details_heading %}{% endblock %}
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Play/Pause </th>
+                    <th>Song </th>
+                    <th>Length</th>
+                    <th>Favorite </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for song in songs %}
+                <tr>
+                    <td style="height:72px;width:378px;">
+                        <audio controls>
+                            <source src="{{song.audio_file.url}}" type="audio/ogg"></source>
+                            <source src="{{song.audio_file.url}}" type="audio/mpeg"></source>
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+                    <td>{{song.song_title}}</td>
+                    <td>length</td>
+                    <td><a href="{% url 'music:favorite_song' song.id %}"><i class="glyphicon glyphicon-heart{% if not song.isfavorite %}-empty{% endif %}"></i></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+{% endblock %}
