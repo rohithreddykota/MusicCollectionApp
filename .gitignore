@@ -1,1 +1,5 @@
-.musicapp/__pycache__/*
+/musicapp/__pycache__/*
+!/media
+/media/*
+/music/__pycache__/*
+/temp-notforviewers

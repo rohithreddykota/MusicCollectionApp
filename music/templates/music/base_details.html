@@ -11,8 +11,9 @@
                 <tr>
                     <th>Play/Pause </th>
                     <th>Song </th>
-                    <th>Length</th>
+                    <th>Type</th>
                     <th>Favorite </th>
+		    <th>Delete </th>
                 </tr>
             </thead>
             <tbody>
@@ -26,9 +27,10 @@
                         </audio>
                     </td>
                     <td>{{song.song_title}}</td>
-                    <td>length</td>
+                    <td>mp3</td>
                     <td><a href="{% url 'music:favorite_song' song.id %}"><i class="glyphicon glyphicon-heart{% if not song.isfavorite %}-empty{% endif %}"></i></a></td>
-                </tr>
+                    <td><a href="{% url 'music:delete_song' song.id %}"><i class="glyphicon glyphicon-trash"></i></a></td>
+		</tr>
             {% endfor %}
             </tbody>
         </table>

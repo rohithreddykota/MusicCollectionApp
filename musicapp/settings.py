@@ -25,7 +25,7 @@ SECRET_KEY = '#3@ujf@-m-kje=8f3hgre9-w=imdm1_7^8ba+$8o=8h-0$wmrc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rohitreddykota.pythonanywhere.com',]
 
 
 # Application definition
@@ -76,8 +76,16 @@ WSGI_APPLICATION = 'musicapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'ENGINE':'django.db.backends.mysql',
+	'NAME':'rohitreddykota$rohit_db',
+	'USER':'rohitreddykota',
+	'PASSWORD':'rohit_db',
+	'HOST':'rohitreddykota.mysql.pythonanywhere-services.com',
+    },
+    'TEST':{
+	'NAME':'rohitreddykota$test_rohitdb',
     }
 }
 

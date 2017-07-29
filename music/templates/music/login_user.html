@@ -1,0 +1,96 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{% static 'music/css/Footer-Dark.css'%}">
+    <link rel="stylesheet" href="{% static 'music/css/Login-Form-Clean.css'%}">
+    <link rel="stylesheet" href="{% static 'music/css/Login-Form-Dark.css'%}">
+    <link rel="stylesheet" href="{% static 'music/css/Registration-Form-with-Photo.css'%}">
+    <link rel="stylesheet" href="{% static 'music/css/styles.css'%}">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{% url 'music:login_user'%}" style="font-family:Lobster,cursive;color:#f18989;" color="red">Rohith Reddy's Music Collection</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <form class="navbar-form navbar-right" method="get">
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit" style="background-image:url(&quot;None&quot;);background-color:rgb(244,71,107);">Log In</button>
+                    </div>
+                </form>
+                <form class="navbar-form navbar-right" method="get">
+                    <input type="hidden" name="guestuser" />
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit" style="background-image:url(&quot;None&quot;);background-color:rgb(244,71,107);">Guest user</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="register-photo" style="background-image:url(&quot;{%static 'music/images/star-sky.jpg'%}&quot;);background-position:center;">
+        <div class="form-container">
+            <div class="image-holder" style="background-image:url(&quot;{%static 'music/images/Music-Industry-Photo.jpg'%}&quot;);"></div>
+            <form method="post">
+                {% csrf_token %}
+                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="User name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)">
+                </div>
+                <!-- <div class="form-group">
+                    <div class="checkbox">
+                        <label class="control-label">
+                            <input type="checkbox">I have only single account.</label>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-4 item social"><a href="https://www.facebook.com/rohithreddykota"><i class="icon ion-social-facebook"></i></a><a href="https://twitter.com/rohithreddykota"><i class="icon ion-social-twitter"></i></a><a href="https://github.com/rohithreddykota"><i class="icon ion-social-github"></i></a><a href="https://www.instagram.com/rohithreddykota/"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Rohith Reddy Kota © 2017</p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>
